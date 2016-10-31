@@ -7,7 +7,7 @@ import pickle as pkl
 
 os.system('clear')
 
-obj_dir = 'obj_movie/'
+obj_dir = './'
 res_dir = 'res_movie/'
 if not os.path.exists(res_dir):
 	print 'create directory:', res_dir
