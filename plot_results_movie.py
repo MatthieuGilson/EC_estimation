@@ -7,7 +7,7 @@ os.system('clear')
 
 graph_format = 'png'
 
-obj_dir = 'obj_movie/'
+obj_dir = './'
 res_dir = 'res_movie/'
 
 # network parameters
