@@ -5,6 +5,9 @@ Gilson M, Deco G, Friston K, Hagmann P, Mantini D, Betti V, Romani GL, Corbetta 
 Gilson M, Moreno-Bote R, Ponce-Alvarez A, Ritter P, Deco G. Estimation of Directed Effective Connectivity from fMRI Functional Connectivity Hints at Asymmetries of Cortical Connectome. PLoS Comput Biol 2016, 12: e1004762; dx.doi.org/10.1371/journal.pcbi.1004762
 
 The scripts are written in python 2.7 and use numpy, scipy and matplotlib.
+Run scripts in order:
+1) optimization_movie.py
+2) plot_results_movie.py
 
 Here we have 22 subjects with 2 conditions: viewing a black screen or a movie (Ponce-Alvarez A, Deco G, Hagmann P, Romani GL, Mantini D, Corbetta M (2015) Resting-State Temporal Synchronization Networks Emerge from Connectivity Topology and Heterogeneity. PLoS Comput Biol 11(2): e1004100. doi:10.1371/journal.pcbi.1004100). The fMRI covariance matrices are stored in FC_emp.npy (indices: subject; condition = black screen / movie; time shift = 1 / 2; ROI; ROI). The corresponding time constants for the BOLD autocovariances are in tau_x.npy (indices: subject; ROI).
 
