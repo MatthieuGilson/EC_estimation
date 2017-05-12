@@ -11,20 +11,16 @@ obj_dir = './'
 res_dir = 'res_movie/'
 
 # network parameters
-ind_valid = np.arange(22)
-
-n_sub = ind_valid.size
-
-n_cond = 2
-
+n_sub = 22 # number of subjects
+n_cond = 2 # rest and movie conditions
 N = 66 # size of network
 
-i_tau = 1 # tau used in optimization
+i_tau = 1 # tau used in optimization (to adjust according to optimization_movie.py)
 
 
-# load original data
-FC_emp = np.load(obj_dir+'FC_emp.npy')
-
+# load empirical FC and ROI labels
+FC_emp = np.load(res_dir+'FC_emp.npy')
+ROI_labels = np.load(obj_dir+'ROI_labels.npy')
 
 # masks
 mask_EC = np.load(res_dir+'mask_EC.npy')
@@ -58,8 +54,8 @@ for i_cond in range(n_cond):
 
 print
 print 'consistency'
-print 'Pearson FC0 emp:', Pearson_FC0_emp.mean(0), ';', Pearson_FC0_emp.std(0)
-print 'Pearson EC:', Pearson_EC.mean(0), ';', Pearson_EC.std(0)
+print 'Pearson FC0 emp (rest, movie):', Pearson_FC0_emp.mean(0), '; std:', Pearson_FC0_emp.std(0)
+print 'Pearson EC (rest, movie):', Pearson_EC.mean(0), '; std', Pearson_EC.std(0)
 
 
 
@@ -85,3 +81,18 @@ pp.ylabel('Pearson FC0 emp')
 pp.savefig(res_dir+'Pearson_FC_vs_Pearson_EC.'+graph_format,format=graph_format)
 pp.close()
 
+
+
+print
+print 'significance test for changes in input variances on diagonal of Sigma across conditions (pval<0.01 uncorrected):'
+for i in range(N):
+	if stt.ttest_ind(Sigma_mod[:,0,i,i],Sigma_mod[:,1,i,i],equal_var=False)[1]<0.01:
+		print ROI_labels[i], ' with mean change', np.mean(Sigma_mod[:,1,i,i]-Sigma_mod[:,0,i,i])
+
+
+print
+print 'significance test of changes in EC across conditions (pval<0.01 uncorrected):'
+for i in range(N):
+	for j in range(N):
+		if mask_EC[i,j] and stt.ttest_ind(EC_mod[:,0,i,j],EC_mod[:,1,i,j],equal_var=False)[1]<0.01:
+			print ROI_labels[j], '->', ROI_labels[i], ' with mean change', np.mean(EC_mod[:,1,i,j]-EC_mod[:,0,i,j])
