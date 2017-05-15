@@ -10,7 +10,7 @@ Run scripts in order:
 1) optimization_movie.py
 2) plot_results_movie.py
 
-Here we have 22 subjects with 2 conditions: viewing a black screen or a movie (Ponce-Alvarez A, Deco G, Hagmann P, Romani GL, Mantini D, Corbetta M (2015) Resting-State Temporal Synchronization Networks Emerge from Connectivity Topology and Heterogeneity. PLoS Comput Biol 11(2): e1004100. doi:10.1371/journal.pcbi.1004100). The fMRI time series are stored in rest_movie_ts.npy (indices: subject; condition = black screen / movie with 2 sessions each; ROI index; time in TRs).
+Here we have 22 subjects with 2 conditions: viewing a black screen (rest) or a movie. The fMRI time series are stored in rest_movie_ts.npy (indices: subject; condition = rest and movie with 2 sessions each, so 0-1 for rest and 2-3 for movie; ROI index; time in TRs).
 
 File optimization_movie.py: recovers the effective connectivity as well as the input covariance matrix (Sigma) for the BOLD time series and structural connectivity (SC) matrix given by DTI corresponding to Hagmann et al. (PLoS Biol 2008), which is a skeleton for EC; saves results for individual EC and Sigma in 'res_movie' directory (in EC_mod.npy and Sigma_mod.npy files, together with the model covariance matrices FC0 and FCtau that aim to reproduce the empirical counterparts in FC_emp, the corresponding time shift equal to 1 or 2 TR is determined by i_tau); the algorithm to tune Sigma has been improved compared to the paper Gilson et al. 2016.
 
