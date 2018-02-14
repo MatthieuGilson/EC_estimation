@@ -3,7 +3,7 @@ import numpy as np
 import scipy.linalg as spl
 import scipy.stats as stt
 import matplotlib.pyplot as pp
-import pickle as pkl
+import pickle as pklupf.edu
 
 os.system('clear')
 
@@ -76,7 +76,6 @@ mask_Sigma = np.eye(N,dtype=bool)
 
 ##############
 # optimization
-w_C = 1. # weight reference to set max in optimization (to increase if too many saturated estimated weights)
 
 # optimzation rates (to avoid explosion of activity, Sigma is tuned quicker)
 epsilon_EC = 0.0005
