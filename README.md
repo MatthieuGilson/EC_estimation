@@ -1,3 +1,5 @@
+**These scripts have now been integrated in a toolbox, we recommend using the newer version:https://github.com/mb-BCA/notebooks_review2019**
+
 Estimation of effective connectivity (EC) and input statistics (variances in matrix Sigma) to interpret fMRI/BOLD time series
 
 related to draft:
